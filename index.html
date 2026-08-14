@@ -10,6 +10,7 @@
     <title>TuinZorg DP | Tuinonderhoud met passie</title>
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <header class="site-header" id="top">
@@ -33,22 +34,42 @@
     <main>
       <section class="hero">
         <div class="hero-media" aria-hidden="true"></div>
+        <div class="hero-leaf hero-leaf-one" aria-hidden="true"></div>
+        <div class="hero-leaf hero-leaf-two" aria-hidden="true"></div>
         <div class="hero-shade"></div>
-        <div class="hero-content">
-          <p class="eyebrow">Tuinonderhoud met passie</p>
-          <h1>TuinZorg DP</h1>
-          <p class="hero-copy">
-            Verzorgd tuinonderhoud, snoeiwerken en gazonrenovatie voor tuinen die opnieuw strak,
-            rustig en gezond mogen aanvoelen.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="tel:+32469413730">Bel 0469 41 37 30</a>
-            <a class="button secondary" href="mailto:tuinzorgdp@gmail.com">Vraag een offerte</a>
+
+        <div class="hero-inner reveal">
+          <div class="hero-content">
+            <p class="eyebrow">Tuinonderhoud met passie</p>
+            <h1>TuinZorg DP</h1>
+            <p class="hero-copy">
+              Verzorgd tuinonderhoud, snoeiwerken en gazonrenovatie voor tuinen die opnieuw strak,
+              rustig en gezond mogen aanvoelen.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="tel:+32469413730"><span>Bel 0469 41 37 30</span></a>
+              <a class="button secondary" href="mailto:tuinzorgdp@gmail.com"><span>Vraag een offerte</span></a>
+            </div>
           </div>
+
+          <aside class="hero-card" aria-label="Contactgegevens TuinZorg DP">
+            <img src="assets/tuinzorgdp-logo.jpg" alt="TuinZorg DP logo" />
+            <div>
+              <span>Direct contact</span>
+              <strong>tuinzorgdp@gmail.com</strong>
+              <strong>0469 41 37 30</strong>
+            </div>
+          </aside>
+        </div>
+
+        <div class="hero-badges reveal">
+          <span>Tuinonderhoud</span>
+          <span>Snoeiwerken</span>
+          <span>Gazonrenovatie</span>
         </div>
       </section>
 
-      <section class="intro section">
+      <section class="intro section reveal">
         <div>
           <p class="section-label">Gevestigd in Gent</p>
           <h2>Tuinwerk zonder overbodige praat.</h2>
@@ -60,43 +81,63 @@
       </section>
 
       <section class="services section" id="diensten">
-        <div class="section-heading">
+        <div class="section-heading reveal">
           <p class="section-label">Diensten</p>
           <h2>Wat TuinZorg DP voor je tuin doet</h2>
         </div>
 
         <div class="service-grid">
-          <article class="service-card">
-            <span>01</span>
-            <h3>Tuinonderhoud</h3>
-            <p>Regelmatig of eenmalig onderhoud om je tuin verzorgd en toegankelijk te houden.</p>
+          <article class="service-card reveal">
+            <div class="service-photo service-photo-maintenance"></div>
+            <div class="service-body">
+              <span>01</span>
+              <h3>Tuinonderhoud</h3>
+              <p>Regelmatig of eenmalig onderhoud om je tuin verzorgd en toegankelijk te houden.</p>
+            </div>
           </article>
-          <article class="service-card">
-            <span>02</span>
-            <h3>Snoeiwerken</h3>
-            <p>Bomen, hagen en beplanting snoeien met oog voor vorm, veiligheid en seizoen.</p>
+          <article class="service-card reveal">
+            <div class="service-photo service-photo-pruning"></div>
+            <div class="service-body">
+              <span>02</span>
+              <h3>Snoeiwerken</h3>
+              <p>Bomen, hagen en beplanting snoeien met oog voor vorm, veiligheid en seizoen.</p>
+            </div>
           </article>
-          <article class="service-card">
-            <span>03</span>
-            <h3>Gazononderhoud</h3>
-            <p>Onderhoud en renovatie voor gazons die opnieuw dichter, frisser en sterker mogen worden.</p>
+          <article class="service-card reveal">
+            <div class="service-photo service-photo-lawn"></div>
+            <div class="service-body">
+              <span>03</span>
+              <h3>Gazononderhoud</h3>
+              <p>Onderhoud en renovatie voor gazons die opnieuw dichter, frisser en sterker mogen worden.</p>
+            </div>
           </article>
-          <article class="service-card">
-            <span>04</span>
-            <h3>Bosmaaien</h3>
-            <p>Hoog gras, randen en moeilijk bereikbare zones weer netjes onder controle.</p>
+          <article class="service-card reveal">
+            <div class="service-photo service-photo-clearing"></div>
+            <div class="service-body">
+              <span>04</span>
+              <h3>Bosmaaien</h3>
+              <p>Hoog gras, randen en moeilijk bereikbare zones weer netjes onder controle.</p>
+            </div>
           </article>
-          <article class="service-card">
-            <span>05</span>
-            <h3>Tuinen opkuisen</h3>
-            <p>Bladblazen, plantenborders opkuisen en algemeen opruimwerk rond de tuin.</p>
+          <article class="service-card reveal">
+            <div class="service-photo service-photo-cleanup"></div>
+            <div class="service-body">
+              <span>05</span>
+              <h3>Tuinen opkuisen</h3>
+              <p>Bladblazen, plantenborders opkuisen en algemeen opruimwerk rond de tuin.</p>
+            </div>
           </article>
         </div>
       </section>
 
+      <section class="cta-strip">
+        <p>Vrijblijvend bespreken wat je tuin nodig heeft?</p>
+        <a href="mailto:tuinzorgdp@gmail.com">Mail TuinZorg DP</a>
+      </section>
+
       <section class="feature section" id="werkwijze">
-        <div class="feature-image" aria-label="Verzorgde tuin met groen gazon"></div>
-        <div class="feature-copy">
+        <div class="feature-image reveal" aria-label="Verzorgde tuin met groen gazon"></div>
+        <div class="feature-copy reveal">
           <p class="section-label">Aanpak</p>
           <h2>Net werk, duidelijke afspraken en passie voor groen.</h2>
           <p>
@@ -112,22 +153,22 @@
       </section>
 
       <section class="proof section">
-        <div class="proof-item">
+        <div class="proof-item reveal">
           <strong>Gent</strong>
           <span>Moleneinde 29, 9042 Gent</span>
         </div>
-        <div class="proof-item">
+        <div class="proof-item reveal">
           <strong>BTW</strong>
           <span>BE 1025.361.363</span>
         </div>
-        <div class="proof-item">
+        <div class="proof-item reveal">
           <strong>Sinds</strong>
           <span>13 juli 2025</span>
         </div>
       </section>
 
       <section class="contact section" id="contact">
-        <div class="contact-copy">
+        <div class="contact-copy reveal">
           <p class="section-label">Contact</p>
           <h2>Een tuin die aandacht nodig heeft?</h2>
           <p>
@@ -136,7 +177,7 @@
           </p>
         </div>
 
-        <div class="contact-panel">
+        <div class="contact-panel reveal">
           <a href="tel:+32469413730">
             <span>Telefoon</span>
             <strong>0469 41 37 30</strong>
@@ -161,7 +202,5 @@
       <span>&copy; 2026 TuinZorg DP</span>
       <a href="#top">Terug naar boven</a>
     </footer>
-
-    <script src="script.js"></script>
   </body>
 </html>
