@@ -31,6 +31,19 @@ body {
     linear-gradient(180deg, #08160d 0%, #0b1711 42%, #07110b 100%);
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(199, 236, 116, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(199, 236, 116, 0.035) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 72%);
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -123,6 +136,27 @@ img {
   align-items: end;
   overflow: hidden;
   padding: 162px clamp(20px, 5vw, 64px) 40px;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: clamp(20px, 7vw, 120px);
+  bottom: 96px;
+  z-index: 1;
+  width: clamp(160px, 21vw, 310px);
+  height: clamp(160px, 21vw, 310px);
+  pointer-events: none;
+  opacity: 0.22;
+  background:
+    repeating-radial-gradient(
+      ellipse at center,
+      transparent 0 16px,
+      rgba(199, 236, 116, 0.55) 17px 18px,
+      transparent 19px 34px
+    );
+  clip-path: polygon(50% 0, 100% 38%, 80% 100%, 20% 100%, 0 38%);
+  transform: rotate(10deg);
 }
 
 .hero-media,
@@ -362,11 +396,28 @@ h3 {
 }
 
 .intro {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.8fr);
   gap: clamp(28px, 6vw, 90px);
   align-items: end;
+  overflow: hidden;
   background: #0b1711;
+}
+
+.intro::after {
+  content: "";
+  position: absolute;
+  right: clamp(20px, 5vw, 70px);
+  bottom: -38px;
+  width: 180px;
+  height: 180px;
+  border: 1px solid rgba(199, 236, 116, 0.16);
+  border-radius: 50%;
+  background:
+    linear-gradient(90deg, transparent 49%, rgba(199, 236, 116, 0.24) 50%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, rgba(199, 236, 116, 0.18) 50%, transparent 51%);
+  opacity: 0.5;
 }
 
 .intro p:last-child,
@@ -378,9 +429,27 @@ h3 {
 }
 
 .services {
+  position: relative;
+  overflow: hidden;
   background:
     linear-gradient(180deg, var(--cream-strong), var(--cream));
   color: var(--dark-text);
+}
+
+.services::before {
+  content: "";
+  position: absolute;
+  top: 38px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(135deg, transparent 47%, var(--green-700) 48% 52%, transparent 53%),
+    linear-gradient(45deg, transparent 47%, var(--green-700) 48% 52%, transparent 53%);
+  background-size: 42px 42px;
+  transform: rotate(8deg);
 }
 
 .services .section-label {
@@ -388,17 +457,67 @@ h3 {
 }
 
 .section-heading {
+  position: relative;
+  z-index: 1;
   max-width: 850px;
   margin-bottom: 44px;
 }
 
+.growth-line {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  margin: -20px 0 36px;
+}
+
+.growth-line svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.growth-line path {
+  fill: none;
+  stroke: rgba(21, 84, 42, 0.35);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 1100;
+  stroke-dashoffset: 1100;
+}
+
+.growth-line.is-visible path:first-child {
+  animation: drawLine 1400ms ease forwards;
+}
+
+.growth-line .leaf {
+  fill: rgba(138, 204, 61, 0.24);
+  stroke: rgba(21, 84, 42, 0.36);
+  stroke-width: 3;
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+  opacity: 0;
+  transform-origin: center;
+}
+
+.growth-line.is-visible .leaf {
+  animation: leafPop 560ms ease 900ms forwards;
+}
+
+.growth-line.is-visible .leaf.right {
+  animation-delay: 1120ms;
+}
+
 .service-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 16px;
 }
 
 .service-card {
+  position: relative;
   min-height: 344px;
   display: grid;
   grid-template-rows: 132px 1fr;
@@ -411,9 +530,40 @@ h3 {
   transition: transform 260ms ease, box-shadow 260ms ease;
 }
 
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border-radius: 100% 0 100% 0;
+  background: rgba(199, 236, 116, 0.92);
+  box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.32);
+  transform: rotate(-18deg) scale(0.86);
+  transition: transform 260ms ease;
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  right: 34px;
+  top: 39px;
+  z-index: 3;
+  width: 22px;
+  height: 1px;
+  background: rgba(19, 36, 21, 0.36);
+  transform: rotate(-44deg);
+}
+
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 24px 56px rgba(19, 36, 21, 0.15);
+}
+
+.service-card:hover::before {
+  transform: rotate(-8deg) scale(1);
 }
 
 .service-photo {
@@ -465,6 +615,8 @@ h3 {
 }
 
 .cta-strip {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -475,12 +627,27 @@ h3 {
   font-weight: 850;
 }
 
+.cta-strip::before {
+  content: "";
+  position: absolute;
+  inset: -40px -20px;
+  pointer-events: none;
+  opacity: 0.22;
+  background:
+    linear-gradient(115deg, transparent 0 44%, rgba(8, 33, 14, 0.42) 45% 46%, transparent 47% 100%),
+    linear-gradient(65deg, transparent 0 52%, rgba(255, 255, 255, 0.46) 53% 54%, transparent 55% 100%);
+  background-size: 160px 70px;
+  animation: patternSlide 16s linear infinite;
+}
+
 .cta-strip p {
+  position: relative;
   margin: 0;
   font-size: clamp(1.1rem, 2vw, 1.6rem);
 }
 
 .cta-strip a {
+  position: relative;
   flex: 0 0 auto;
   border: 1px solid rgba(8, 33, 14, 0.22);
   border-radius: 8px;
@@ -489,6 +656,8 @@ h3 {
 }
 
 .feature {
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(280px, 0.92fr) minmax(280px, 0.75fr);
   gap: clamp(28px, 5vw, 72px);
@@ -498,13 +667,45 @@ h3 {
     #102018;
 }
 
+.feature::before {
+  content: "";
+  position: absolute;
+  right: clamp(22px, 6vw, 90px);
+  top: 70px;
+  width: 156px;
+  height: 156px;
+  pointer-events: none;
+  opacity: 0.34;
+  background:
+    linear-gradient(90deg, transparent 48%, rgba(199, 236, 116, 0.52) 49% 51%, transparent 52%),
+    linear-gradient(0deg, transparent 48%, rgba(199, 236, 116, 0.3) 49% 51%, transparent 52%);
+  border: 1px solid rgba(199, 236, 116, 0.18);
+  border-radius: 50%;
+}
+
 .feature-image {
+  position: relative;
   min-height: 580px;
   border-radius: 8px;
   background:
     linear-gradient(180deg, rgba(13, 52, 24, 0.08), rgba(13, 52, 24, 0.35)),
     url("https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&fit=crop&w=1200&q=84") center / cover;
   box-shadow: var(--shadow);
+}
+
+.feature-image::after {
+  content: "Tuinonderhoud";
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(6, 24, 13, 0.56);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.88rem;
+  font-weight: 850;
+  backdrop-filter: blur(12px);
 }
 
 .check-list {
@@ -547,11 +748,26 @@ h3 {
 }
 
 .proof-item {
+  position: relative;
+  overflow: hidden;
   min-height: 190px;
   padding: 34px;
   background:
     linear-gradient(135deg, rgba(138, 204, 61, 0.08), transparent 58%),
     var(--green-900);
+}
+
+.proof-item::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: -34px;
+  width: 112px;
+  height: 112px;
+  border-radius: 100% 0 100% 0;
+  border: 1px solid rgba(199, 236, 116, 0.24);
+  background: rgba(199, 236, 116, 0.08);
+  transform: rotate(-20deg);
 }
 
 .proof-item strong {
@@ -567,6 +783,8 @@ h3 {
 }
 
 .contact {
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(280px, 0.85fr) minmax(280px, 0.85fr);
   gap: clamp(28px, 6vw, 90px);
@@ -574,6 +792,19 @@ h3 {
   background:
     linear-gradient(90deg, rgba(8, 22, 14, 0.96), rgba(8, 22, 14, 0.76)),
     url("https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1600&q=84") center / cover;
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  left: -70px;
+  bottom: 36px;
+  width: 240px;
+  height: 240px;
+  pointer-events: none;
+  opacity: 0.22;
+  background: repeating-conic-gradient(from 20deg, rgba(199, 236, 116, 0.52) 0 8deg, transparent 8deg 22deg);
+  mask-image: radial-gradient(circle, transparent 0 44%, black 45% 50%, transparent 51%);
 }
 
 .contact-panel {
@@ -693,6 +924,34 @@ h3 {
   }
 }
 
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes leafPop {
+  from {
+    opacity: 0;
+    transform: scale(0.72) rotate(-8deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes patternSlide {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 320px 0;
+  }
+}
+
 @media (max-width: 1080px) {
   .service-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -787,7 +1046,12 @@ h3 {
     padding: 130px 20px 42px;
   }
 
-  .hero-leaf {
+  .hero-leaf,
+  .hero::after,
+  .intro::after,
+  .services::before,
+  .feature::before,
+  .contact::before {
     display: none;
   }
 
